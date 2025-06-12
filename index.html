@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>College Event Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>College Event Management System</header>
+  <main>
+    <div class="tabs">
+      <div id="tab-admin" class="tab active" tabindex="0" role="button" aria-selected="true" aria-controls="panel-admin">Admin Panel</div>
+      <div id="tab-student" class="tab" tabindex="0" role="button" aria-selected="false" aria-controls="panel-student">Student Registration</div>
+    </div>
+
+    <!-- Admin Panel -->
+    <section id="panel-admin" role="tabpanel" aria-labelledby="tab-admin">
+      <h2>Create Event</h2>
+      <form id="event-form" action="create_event.php" method="POST">
+        <label for="event-title">Title</label>
+        <input type="text" id="event-title" name="title" required />
+
+        <label for="event-date">Date</label>
+        <input type="date" id="event-date" name="date" required />
+
+        <label for="event-description">Description</label>
+        <textarea id="event-description" name="description" required></textarea>
+
+        <button type="submit">Create Event</button>
+      </form>
+
+      <div class="divider"></div>
+
+      <h2>Events & Participants</h2>
+      <div id="events-list">
+        <!-- Loaded dynamically -->
+      </div>
+    </section>
+
+    <!-- Student Registration -->
+    <section id="panel-student" role="tabpanel" aria-labelledby="tab-student" hidden>
+      <h2>Register for Event</h2>
+      <form id="registration-form" action="register_student.php" method="POST">
+        <label for="student-name">Name</label>
+        <input type="text" id="student-name" name="name" required />
+
+        <label for="student-email">Email</label>
+        <input type="email" id="student-email" name="email" required />
+
+        <label for="event-select">Select Event</label>
+        <select id="event-select" name="event_id" required>
+          <!-- Options loaded dynamically -->
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+      <div id="registration-message" class="message"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
